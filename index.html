@@ -137,6 +137,58 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       transition: all 0.4s ease;
     }
+.service-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.service-card:hover {
+  box-shadow: 0 25px 50px rgba(31,111,255,0.25);
+  transform: translateY(-5px);
+}
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.arrow {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--blue);
+  transition: transform 0.3s ease;
+}
+
+.service-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.service-content ul {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.service-card.active .service-content {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.service-card.active .arrow {
+  transform: rotate(45deg);
+}
 
     .card:hover {
       transform: translateY(-10px) scale(1.02);
@@ -247,12 +299,57 @@
 <!-- SERVICES -->
 <section id="services">
   <h2>Our Services</h2>
+
   <div class="services">
-    <div class="card">Domestic Cleaning</div>
-    <div class="card">Deep Cleaning</div>
-    <div class="card">End of Tenancy</div>
+
+    <div class="service-card" onclick="toggleService(this)">
+      <div class="service-header">
+        <h3>Domestic Cleaning</h3>
+        <span class="arrow">+</span>
+      </div>
+      <div class="service-content">
+        <ul>
+          <li>Weekly & fortnightly cleans</li>
+          <li>Kitchens & bathrooms</li>
+          <li>Dusting & vacuuming</li>
+          <li>Flexible schedules</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="toggleService(this)">
+      <div class="service-header">
+        <h3>Deep Cleaning</h3>
+        <span class="arrow">+</span>
+      </div>
+      <div class="service-content">
+        <ul>
+          <li>Full property deep clean</li>
+          <li>Appliances & cupboards</li>
+          <li>Skirting boards</li>
+          <li>One-off service</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="toggleService(this)">
+      <div class="service-header">
+        <h3>End of Tenancy</h3>
+        <span class="arrow">+</span>
+      </div>
+      <div class="service-content">
+        <ul>
+          <li>Agency-approved cleans</li>
+          <li>Inventory checklist</li>
+          <li>Fast turnaround</li>
+          <li>Deposit-ready finish</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </section>
+
 
 <!-- ABOUT -->
 <section id="about">
@@ -291,6 +388,18 @@
     const chat = document.getElementById("chat");
     chat.style.display = chat.style.display === "flex" ? "none" : "flex";
   }
+  function toggleService(card) {
+  const allCards = document.querySelectorAll(".service-card");
+
+  allCards.forEach(c => {
+    if (c !== card) {
+      c.classList.remove("active");
+    }
+  });
+
+  card.classList.toggle("active");
+}
+
 
   // Scroll animation
   const sections = document.querySelectorAll("section");
