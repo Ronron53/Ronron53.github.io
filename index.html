@@ -2,94 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Professional Cleaning Services</title>
+  <title>Local Cleaning Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #f7f7f7;
       color: #333;
+      line-height: 1.6;
     }
+
     header {
       background: #2c7be5;
       color: white;
       padding: 60px 20px;
       text-align: center;
     }
+
+    header img {
+      max-width: 140px;
+      margin-bottom: 20px;
+    }
+
     section {
-      padding: 40px 20px;
-      max-width: 900px;
+      padding: 50px 20px;
+      max-width: 1000px;
       margin: auto;
     }
+
     h2 {
       color: #2c7be5;
+      margin-bottom: 20px;
     }
+
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
+
     .card {
       background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
     }
+
+    .card img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: #2c7be5;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
     footer {
       background: #222;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       font-size: 14px;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      background: white;
-      color: #2c7be5;
-      padding: 12px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
     }
   </style>
 </head>
+
 <body>
 
+<!-- ================= HEADER ================= -->
 <header>
-  <h1>Reliable Domestic Cleaning</h1>
-  <p>Professional, trustworthy, and affordable cleaning services</p>
-  <a class="btn" href="#contact">Get a Quote</a>
+
+  <!-- 🔽 LOGO GOES HERE -->
+  <!-- Put your logo in /images/logo.png -->
+  <img src="images/logo.png" alt="Company Logo">
+
+  <h1>Professional Cleaning Services</h1>
+  <p>Reliable, affordable, and trustworthy local cleaners</p>
+
+  <a href="#contact" class="btn">Get a Free Quote</a>
 </header>
 
+<!-- ================= SERVICES ================= -->
 <section>
   <h2>Our Services</h2>
+
   <div class="services">
-    <div class="card">Regular Domestic Cleaning</div>
-    <div class="card">Deep Cleaning</div>
-    <div class="card">End of Tenancy Cleaning</div>
-    <div class="card">Small Office Cleaning</div>
+
+    <!-- 🔽 SERVICE IMAGE 1 -->
+    <div class="card">
+      <img src="images/service1.jpg" alt="Domestic Cleaning">
+      <h3>Domestic Cleaning</h3>
+      <p>Regular weekly or fortnightly cleaning tailored to your home.</p>
+    </div>
+
+    <!-- 🔽 SERVICE IMAGE 2 -->
+    <div class="card">
+      <img src="images/service2.jpg" alt="Deep Cleaning">
+      <h3>Deep Cleaning</h3>
+      <p>Thorough top-to-bottom cleans for kitchens, bathrooms, and more.</p>
+    </div>
+
+    <!-- 🔽 SERVICE IMAGE 3 -->
+    <div class="card">
+      <img src="images/service3.jpg" alt="End of Tenancy Cleaning">
+      <h3>End of Tenancy</h3>
+      <p>Professional move-in and move-out cleaning for landlords and tenants.</p>
+    </div>
+
   </div>
 </section>
 
+<!-- ================= ABOUT ================= -->
 <section>
   <h2>Why Choose Us</h2>
   <p>
-    We provide reliable, high-quality cleaning services with attention to detail.
-    Fully insured and committed to customer satisfaction.
+    We are a reliable local cleaning company focused on quality, consistency,
+    and customer satisfaction. Fully insured and committed to high standards.
   </p>
 </section>
 
+<!-- ================= CONTACT ================= -->
 <section id="contact">
   <h2>Contact Us</h2>
   <p>Email: your@email.com</p>
   <p>Phone: 07XXXXXXXXX</p>
 </section>
 
+<!-- ================= FOOTER ================= -->
 <footer>
-  © 2026 Professional Cleaning Services
+  © 2026 Your Cleaning Company Name
 </footer>
 
 </body>
 </html>
+
