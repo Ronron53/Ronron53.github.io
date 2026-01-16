@@ -2,150 +2,283 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Local Cleaning Services</title>
+  <title>Fox Cleaning Services</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f7f7f7;
-      color: #333;
-      line-height: 1.6;
+    :root {
+      --blue: #1f6fff;
+      --light-blue: #eaf1ff;
+      --dark: #0f172a;
+      --white: #ffffff;
     }
 
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--dark);
+      background: var(--white);
+    }
+
+    /* ---------- NAVBAR ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      color: var(--blue);
+      font-size: 20px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    /* ---------- HERO ---------- */
     header {
-      background: #2c7be5;
+      padding: 140px 20px 100px;
+      background: linear-gradient(135deg, var(--blue), #4f8cff);
       color: white;
-      padding: 60px 20px;
       text-align: center;
     }
 
-    header img {
-      max-width: 140px;
-      margin-bottom: 20px;
+    header h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
     }
 
+    header p {
+      font-size: 20px;
+      opacity: 0.95;
+    }
+
+    .cta {
+      margin-top: 30px;
+      display: inline-block;
+      background: white;
+      color: var(--blue);
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ---------- SECTIONS ---------- */
     section {
-      padding: 50px 20px;
-      max-width: 1000px;
+      padding: 90px 20px;
+      max-width: 1100px;
       margin: auto;
     }
 
     h2 {
-      color: #2c7be5;
-      margin-bottom: 20px;
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
     }
 
+    /* ---------- SERVICES ---------- */
     .services {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
     }
 
     .card {
       background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about {
+      background: var(--light-blue);
+      border-radius: 30px;
+      padding: 60px;
       text-align: center;
     }
 
-    .card img {
-      width: 100%;
-      max-height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
+    /* ---------- CONTACT ---------- */
+    .contact {
+      text-align: center;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      background: #2c7be5;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
+    /* ---------- FOOTER ---------- */
     footer {
-      background: #222;
+      background: var(--dark);
       color: white;
       text-align: center;
-      padding: 25px;
+      padding: 30px;
+    }
+
+    /* ---------- AI CHAT BUTTON ---------- */
+    .ai-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--blue);
+      color: white;
+      border-radius: 50px;
+      padding: 15px 22px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      z-index: 2000;
+    }
+
+    /* ---------- AI CHAT WINDOW ---------- */
+    .chat {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      width: 320px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 2000;
+    }
+
+    .chat header {
+      background: var(--blue);
+      color: white;
+      padding: 15px;
+      font-weight: 700;
+    }
+
+    .chat .body {
+      padding: 15px;
       font-size: 14px;
+      height: 200px;
+      overflow-y: auto;
+    }
+
+    .chat .msg {
+      background: var(--light-blue);
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .chat footer {
+      padding: 10px;
+      background: #f1f1f1;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 36px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- NAV -->
+<nav>
+  <div class="logo">🦊 Fox Cleaning</div>
+  <div>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
 <header>
-
-  <!-- 🔽 LOGO GOES HERE -->
-  <!-- Put your logo in /images/logo.png -->
-  <img src="images/logo.png" alt="Company Logo">
-
-  <h1>Professional Cleaning Services</h1>
-  <p>Reliable, affordable, and experienced local cleaners</p>
-
-  <a href="#contact" class="btn">Get a Free Quote</a>
+  <h1>Modern, Reliable Cleaning</h1>
+  <p>Domestic & end-of-tenancy cleaning you can trust</p>
+  <a href="#contact" class="cta">Get a Free Quote</a>
 </header>
 
-<!-- ================= SERVICES ================= -->
-<section>
+<!-- SERVICES -->
+<section id="services">
   <h2>Our Services</h2>
-
   <div class="services">
-
-    <!-- 🔽 SERVICE IMAGE 1 -->
-    <div class="card">
-      <img src="images/service1.jpg" alt="Domestic Cleaning">
-      <h3>Domestic Cleaning</h3>
-      <p>Regular weekly or fortnightly cleaning tailored to your home.</p>
-    </div>
-
-    <!-- 🔽 SERVICE IMAGE 2 -->
-    <div class="card">
-      <img src="images/service2.jpg" alt="Deep Cleaning">
-      <h3>Deep Cleaning</h3>
-      <p>Thorough top-to-bottom cleans for kitchens, bathrooms, and more.</p>
-    </div>
-
-    <!-- 🔽 SERVICE IMAGE 3 -->
-    <div class="card">
-      <img src="images/service3.jpg" alt="End of Tenancy Cleaning">
-      <h3>End of Tenancy</h3>
-      <p>Professional move-in and move-out cleaning for landlords and tenants.</p>
-    </div>
-
+    <div class="card">Domestic Cleaning</div>
+    <div class="card">Deep Cleaning</div>
+    <div class="card">End of Tenancy</div>
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section>
-  <h2>Why Choose Us</h2>
-  <p>
-    We are a reliable local cleaning company focused on quality, consistency,
-    and customer satisfaction. Fully insured and committed to high standards.
-  </p>
+<!-- ABOUT -->
+<section id="about">
+  <div class="about">
+    <h2>Why Fox Cleaning?</h2>
+    <p>
+      We combine professional standards with modern systems.
+      Reliable cleaners, clear pricing, and no agency nonsense.
+    </p>
+  </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Email: Foxcleaning@info.com</p>
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2>Get in Touch</h2>
+  <p>Email: your@email.com</p>
   <p>Phone: 07XXXXXXXXX</p>
 </section>
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <footer>
-  © 2026 Fox Cleaning Limited
+  © 2026 Fox Cleaning Services
 </footer>
+
+<!-- AI BUTTON -->
+<div class="ai-button" onclick="toggleChat()">💬 Speak to Fox AI</div>
+
+<!-- AI CHAT -->
+<div class="chat" id="chat">
+  <header>Fox AI Assistant</header>
+  <div class="body">
+    <div class="msg">👋 Hi! I'm Fox AI. How can I help you today?</div>
+    <div class="msg">🧼 Need a quote? Service info? We're building smart help here.</div>
+  </div>
+  <footer>AI coming soon</footer>
+</div>
+
+<script>
+  function toggleChat() {
+    const chat = document.getElementById("chat");
+    chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+  }
+</script>
 
 </body>
 </html>
+
 
