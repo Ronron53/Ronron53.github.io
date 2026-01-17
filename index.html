@@ -411,6 +411,36 @@
   </div>
 </section>
 
+    /* ---------- HERO QUOTES ---------- */
+.quote-slider {
+  margin-top: 40px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.quote-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: slideQuotes 20s linear infinite;
+}
+
+.quote-track span {
+  display: inline-block;
+  margin: 0 60px;
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+@keyframes slideQuotes {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
     
   </style>
 </head>
@@ -428,6 +458,15 @@
 </nav>
 
 <!-- HERO -->
+  <div class="quote-slider">
+  <div class="quote-track">
+    <span>“Reliable, professional, and consistent.”</span>
+    <span>“Designed for medical & family environments.”</span>
+    <span>“Where cleanliness meets trust.”</span>
+    <span>“Professional standards. Friendly service.”</span>
+  </div>
+</div>
+
 <header class="hero">
   <img src="images/logo2.png" class="hero-logo" alt="Fox Cleaning Logo">
   <h1>Professional Cleaning, Affordable Cleaning - Fox Guarantee </h1>
