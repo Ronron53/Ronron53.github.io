@@ -426,7 +426,7 @@
     /* ---------- HERO QUOTES ---------- */
 /* ---------- HERO QUOTES (MOBILE SAFE) ---------- */
 .quote-slider {
-  margin-top: 40px;
+  margin-top: 70px;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -437,13 +437,21 @@
   width: max-content;
   animation: slideQuotes 12s linear infinite;
 }
+  
+.quote-slider:hover .quote-track {
+  animation-play-state: paused;
+}
+
 
 .quote-track span {
-  padding: 0 40px;
-  font-size: 16px;
+  padding: 0 45px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
   white-space: nowrap;
   opacity: 0.95;
 }
+
 
 @keyframes slideQuotes {
   0% {
