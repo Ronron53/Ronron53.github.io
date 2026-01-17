@@ -132,6 +132,31 @@
       width: 100%;
     }
 
+    .nav-center {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--blue);               /* or #333 if you prefer darker */
+  letter-spacing: 1px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Hide center on mobile/tablet */
+@media (max-width: 992px) {         /* or 768px - choose your breakpoint */
+  .nav-center {
+    display: none;
+  }
+  
+  /* Optional: make nav-links stack or space better on mobile */
+  .nav-links {
+    display: flex;
+    gap: 15px;                      /* smaller spacing on small screens */
+  }
+  
+  nav {
+    padding: 12px 20px;             /* slightly less padding on mobile */
+  }
+}
     /* ---------- HERO ---------- */
     header {
       padding: 160px 20px 120px;
@@ -512,7 +537,13 @@
   <a href="#" onclick="window.location.reload(); return false;">
     <img src="images/logo2.png" alt="Fox Cleaning Logo">
   </a>
-  <div>
+
+  <!-- New center section - only visible on desktop -->
+  <div class="nav-center">
+    Professional • Reliable • Affordable Cleaning
+  </div>
+
+  <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
