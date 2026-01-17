@@ -30,16 +30,22 @@
 .hero-logo {
   max-width: 180px;
   margin-bottom: 25px;
-  animation: floatIn 1.2s ease;          /* keep your entrance animation */
-  transition: all 0.4s ease;             /* smooth transition for hover */
-  transform: scale(1);                   /* starting state */
+  animation: floatIn 1.2s ease;
+  transition: all 0.4s ease;
+  transform: scale(1);
+  background: transparent !important;   /* ← forces no background */
 }
 
 .hero-logo:hover {
-  transform: scale(1.15);                /* pop out / grow ~15% */
-  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8));  /* glowing white halo */
-  box-shadow: 0 15px 40px rgba(31, 111, 255, 0.5); 
-  animation: pulseGlow 1.5s infinite ease-in-out; /* deeper blue shadow */
+  transform: scale(1.15);
+  
+  /* Use drop-shadow instead of box-shadow — better for transparent images */
+  filter: drop-shadow(0 15px 30px rgba(31, 111, 255, 0.6));
+  
+  /* Optional: Add a soft white glow around the edges */
+  /* filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.7)); */
+  
+  /* No box-shadow needed — drop-shadow handles the lift better without artifacts */
 }
 
 @keyframes pulseGlow {
