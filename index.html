@@ -38,8 +38,15 @@
 .hero-logo:hover {
   transform: scale(1.15);                /* pop out / grow ~15% */
   filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8));  /* glowing white halo */
-  box-shadow: 0 15px 40px rgba(31, 111, 255, 0.5);         /* deeper blue shadow */
+  box-shadow: 0 15px 40px rgba(31, 111, 255, 0.5); 
+  animation: pulseGlow 1.5s infinite ease-in-out; /* deeper blue shadow */
 }
+
+@keyframes pulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)); }
+  50%      { filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)); }
+}
+
 
 @keyframes floatIn {
   from {
