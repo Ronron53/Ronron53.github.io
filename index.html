@@ -368,40 +368,45 @@
   box-shadow: 0 30px 60px rgba(31,111,255,0.35);
 }
 
-<section id="trust">
-  <h2>Trust & Compliance</h2>
+/* ---------- TRUST & COMPLIANCE ---------- */
+/* ---------- TRUST & COMPLIANCE ---------- */
+#trust {
+  background: linear-gradient(135deg, var(--blue), #4f8cff);
+  border-radius: 60px;
+  padding: 100px 30px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
 
-  <div class="trust-grid">
 
-    <div class="trust-card">
-      <h3>✔ Fully Insured</h3>
-      <p>Public liability insurance in place for complete peace of mind.</p>
-    </div>
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
 
-    <div class="trust-card">
-      <h3>✔ DBS-Checked Staff</h3>
-      <p>Cleaners can be DBS-checked upon company launch.</p>
-    </div>
+.trust-card {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+  transition: all 0.4s ease;
+  color: var(--dark);
+}
 
-    <div class="trust-card">
-      <h3>✔ COSHH Aware</h3>
-      <p>Cleaning processes designed with COSHH safety standards in mind.</p>
-    </div>
+.trust-card h3 {
+  margin-top: 0;
+  color: var(--blue);
+}
 
-    <div class="trust-card">
-      <h3>✔ GDPR Conscious</h3>
-      <p>Client data handled responsibly and securely.</p>
-    </div>
+.trust-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 30px 65px rgba(0,0,0,0.25);
+}
 
-    <div class="trust-card">
-      <h3>✔ Medical-Site Ready</h3>
-      <p>Framework suitable for surgeries, dentists, nurseries and family centres.</p>
-    </div>
-
-    <div class="trust-card">
-      <h3>✔ Professional Standards</h3>
-      <p>Clear processes, checklists and quality control systems.</p>
-    </div>
 
   </div>
 </section>
