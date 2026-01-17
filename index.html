@@ -236,20 +236,48 @@
     }
 
     /* ---------- AI BUTTON ---------- */
-    .ai-button {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: var(--blue);
-      color: white;
-      border-radius: 50px;
-      padding: 15px 22px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(31,111,255,0.6);
-      transition: all 0.3s ease;
-      z-index: 2000;
-    }
+.ai-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 70px;
+  height: 70px;
+  background: white;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 15px 35px rgba(31,111,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2000;
+}
+
+.ai-button img {
+  width: 100%;
+  height: auto;
+}
+.ai-button img {
+  animation: foxPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes foxPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+/* 👆 END OPTION 4 */
+
+.ai-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(31,111,255,0.9);
+}
+.ai-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(31,111,255,0.9);
+}
+
 
     .ai-button:hover {
       box-shadow: 0 0 30px rgba(31,111,255,0.9);
@@ -298,6 +326,21 @@
       font-size: 12px;
       text-align: center;
     }
+    
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--blue);
+  color: white;
+  padding: 15px;
+  font-weight: 700;
+}
+
+.chat-header img {
+  width: 28px;
+  height: auto;
+}
 
     /* ---------- GALLERY ---------- */
 .image-grid {
@@ -434,10 +477,17 @@
   © 2026 Fox Cleaning Services
 </footer>
 
-<div class="ai-button" onclick="toggleChat()">💬 Speak to Fox AI</div>
+<div class="ai-button" onclick="toggleChat()">
+  <img src="images/logo2.png" alt="Fox AI">
+</div>
+
 
 <div class="chat" id="chat">
-  <header>Fox AI</header>
+  <header class="chat-header">
+    <img src="images/logo2.png" alt="Fox AI">
+    <span>Fox AI</span>
+  </header>
+
   <div class="body">
     <div class="msg">👋 Hi! I’m Fox AI.</div>
     <div class="msg">Ask about services, pricing, or availability.</div>
