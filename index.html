@@ -529,6 +529,18 @@
   }
 }
 
+/* ---------- SCROLL REVEAL ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
     
   </style>
@@ -575,11 +587,11 @@
 
 <!-- SERVICES -->
 <section id="services">
-  <h2>Our Services</h2>
+  <h2 class="reveal">Our Services</h2>
 
   <div class="services">
 
-    <div class="service-card" onclick="toggleService(this)">
+    <div class="service-card reveal" onclick="toggleService(this)">
       <div class="service-header">
         <h3>Domestic House Cleaning</h3>
         <span class="arrow">+</span>
@@ -628,36 +640,36 @@
 </section>
 
 <section id="trust">
-  <h2>Trust & Compliance</h2>
+  <h2 class="reveal">Trust & Compliance</h2>
 
   <div class="trust-grid">
 
-    <div class="trust-card">
+    <div class="trust-card reveal">
       <h3>✔ Fully Insured</h3>
       <p>Public liability insurance in place for complete peace of mind.</p>
     </div>
 
-    <div class="trust-card">
+    <div class="trust-card reveal">
       <h3>✔ DBS-Checked Staff</h3>
       <p>Cleaners can be DBS-checked upon company launch.</p>
     </div>
 
-    <div class="trust-card">
+    <div class="trust-card reveal">
       <h3>✔ COSHH Aware</h3>
       <p>Cleaning processes designed with COSHH safety standards in mind.</p>
     </div>
 
-    <div class="trust-card">
+    <div class="trust-card reveal">
       <h3>✔ GDPR Conscious</h3>
       <p>Client data handled responsibly and securely.</p>
     </div>
 
-    <div class="trust-card">
+    <div class="trust-card reveal">
       <h3>✔ Medical-Site Ready</h3>
       <p>Framework suitable for surgeries, dentists, nurseries and family centres.</p>
     </div>
 
-    <div class="trust-card">
+    <div class="trust-card reveal">
       <h3>✔ Professional Standards</h3>
       <p>Clear processes, checklists and quality control systems.</p>
     </div>
@@ -670,15 +682,15 @@
   <h2>Our Work</h2>
 
   <div class="image-grid">
-    <img src="images/service1.jpg" alt="Cleaning work">
-    <img src="images/service2.jpg" alt="Professional clean">
-    <img src="images/service3.jpg" alt="Spotless results">
+    <img class="reveal" src="images/service1.jpg" alt="Cleaning work">
+    <img class="reveal" src="images/service2.jpg" alt="Professional clean">
+    <img class="reveal" src="images/service3.jpg" alt="Spotless results">
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about">
+  <div class="about reveal">
     <h2>Why Fox Cleaning?</h2>
     <p>
       Friendly, reliable cleaners with modern systems and clear pricing.
@@ -687,7 +699,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="reveal">
   <h2>Contact Us</h2>
   <p>Email: FoxCleaning@info.com</p>
   <p>Phone: 0121DO1</p>
@@ -749,6 +761,26 @@
   const images = document.querySelectorAll(".image-grid img");
 images.forEach(img => observer.observe(img));
 
+</script>
+
+<script>
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    const revealPoint = 100;
+
+    revealElements.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+
+      if (elementTop < windowHeight - revealPoint) {
+        el.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
 </script>
 
 </body>
