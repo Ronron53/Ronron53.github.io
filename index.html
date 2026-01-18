@@ -6,89 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-   .hero {
-  padding: 140px 20px 100px;
-  background: linear-gradient(135deg, var(--blue), #4f8cff);
-  color: white;
-  text-align: center;
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-  overflow: hidden;
-  gap: 40px;                /* ← adds natural spacing between children */
-}
-
-.hero-logo    { margin-bottom: 30px; }
-.cta          { margin: 35px 0 60px; }   /* more space after button */
-.quote-slider { margin-top: 40px; }      /* extra push if still needed */
-
-
-
-.hero-logo {
-  max-width: 180px;
-  margin-bottom: 25px;
-  animation: floatIn 1.2s ease;
-  transition: all 0.4s ease;
-  transform: scale(1);
-  background: transparent !important;   /* ← forces no background */
-}
-
-.hero-logo:hover {
-  transform: scale(1.15);
-  
-  /* Use drop-shadow instead of box-shadow — better for transparent images */
-  filter: drop-shadow(0 15px 30px rgba(31, 111, 255, 0.6));
-  
-  /* Optional: Add a soft white glow around the edges */
-  /* filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.7)); */
-  
-  /* No box-shadow needed — drop-shadow handles the lift better without artifacts */
-}
-
-@keyframes pulseGlow {
-  0%, 100% { filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)); }
-  50%      { filter: drop-shadow(0 0 40px rgba(255, 255, 255, 1)); }
-}
-
-
-@keyframes floatIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+    /* ---------- GLOBAL ---------- */
     :root {
-      html, body {
-  width: 100%;
-  overflow-x: hidden !important;
-  position: relative;
-}
-
       --blue: #1f6fff;
       --light-blue: #eaf1ff;
       --dark: #0f172a;
       --white: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
+    html, body {
+      width: 100%;
+      overflow-x: hidden !important;
       margin: 0;
       font-family: "Segoe UI", system-ui, sans-serif;
       color: var(--dark);
       background: var(--white);
-      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     /* ---------- NAVBAR ---------- */
@@ -96,108 +33,148 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: white;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 12px 30px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      justify-content: space-between;
+      padding: 14px 28px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
       z-index: 1000;
     }
 
     nav img {
-      height: 40px;
+      height: 42px;
     }
 
-    nav a {
-      margin-left: 20px;
+    .nav-links a {
+      margin-left: 22px;
       text-decoration: none;
-      color: #333;
+      color: var(--dark);
       font-weight: 500;
       position: relative;
     }
 
-    nav a::after {
+    .nav-links a::after {
       content: "";
       position: absolute;
+      left: 0;
+      bottom: -5px;
       width: 0;
       height: 2px;
       background: var(--blue);
-      bottom: -5px;
-      left: 0;
       transition: width 0.3s ease;
     }
 
-    nav a:hover::after {
+    .nav-links a:hover::after {
       width: 100%;
     }
 
     .nav-center {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--blue);               /* or #333 if you prefer darker */
-  letter-spacing: 1px;
-  white-space: nowrap;
-  text-align: center;
-  margin-right: -200px;
-}
+      color: var(--blue);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
 
-/* Hide center on mobile/tablet */
-@media (max-width: 992px) {         /* or 768px - choose your breakpoint */
-  .nav-center {
-    display: none;
-  }
-  
-  /* Optional: make nav-links stack or space better on mobile */
-  .nav-links {
-    display: flex;
-    gap: 15px;                      /* smaller spacing on small screens */
-  }
-  
-  nav {
-    padding: 12px 20px;             /* slightly less padding on mobile */
-  }
-}
+    @media (max-width: 900px) {
+      .nav-center {
+        display: none;
+      }
+    }
+
     /* ---------- HERO ---------- */
-    header {
-      padding: 160px 20px 120px;
+    .hero {
+      min-height: 100vh;
+      padding: 160px 20px 80px;
       background: linear-gradient(135deg, var(--blue), #4f8cff);
       color: white;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 30px;
+      position: relative;
+      overflow: hidden;
     }
 
-    header h1 {
-      font-size: 48px;
-      margin-bottom: 15px;
+    .hero-logo {
+      max-width: 180px;
+      transition: transform 0.4s ease;
     }
 
-    header p {
+    .hero-logo:hover {
+      transform: scale(1.12);
+      filter: drop-shadow(0 15px 30px rgba(255,255,255,0.7));
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin: 0;
+    }
+
+    .hero p {
       font-size: 20px;
       opacity: 0.95;
     }
 
     .cta {
-      margin-top: 30px;
-      display: inline-block;
       background: white;
       color: var(--blue);
-      padding: 14px 30px;
-      border-radius: 40px;
+      padding: 14px 34px;
+      border-radius: 999px;
       font-weight: 700;
       text-decoration: none;
       transition: all 0.3s ease;
     }
 
     .cta:hover {
-      box-shadow: 0 0 25px rgba(255,255,255,0.8);
-      transform: scale(1.05);
+      transform: scale(1.06);
+      box-shadow: 0 0 30px rgba(255,255,255,0.9);
+    }
+
+    /* ---------- QUOTES ---------- */
+    .quote-slider {
+      margin-top: 120px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .quote-track {
+      display: flex;
+      width: max-content;
+      animation: slideQuotes 12s linear infinite;
+    }
+
+    .quote-slider:hover .quote-track {
+      animation-play-state: paused;
+    }
+
+    .quote-track span {
+      padding: 0 45px;
+      font-size: 20px;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0.95;
+    }
+
+    @keyframes slideQuotes {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 768px) {
+      .quote-track span {
+        font-size: 16px;
+        padding: 0 28px;
+      }
     }
 
     /* ---------- SECTIONS ---------- */
     section {
-      padding: 100px 20px;
       max-width: 1100px;
       margin: auto;
+      padding: 100px 20px;
       opacity: 0;
       transform: translateY(40px);
       transition: all 0.8s ease;
@@ -221,78 +198,114 @@
       gap: 30px;
     }
 
-    .card {
+    .service-card {
       background: white;
       border-radius: 20px;
-      padding: 30px;
-      text-align: center;
+      padding: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      cursor: pointer;
       transition: all 0.4s ease;
     }
-.service-card {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  padding: 25px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-}
 
-.service-card:hover {
-  box-shadow: 0 25px 50px rgba(31,111,255,0.25);
-  transform: translateY(-5px);
-}
-
-.service-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.service-header h3 {
-  margin: 0;
-  font-size: 20px;
-}
-
-.arrow {
-  font-size: 26px;
-  font-weight: bold;
-  color: var(--blue);
-  transition: transform 0.3s ease;
-}
-
-.service-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.4s ease;
-  opacity: 0;
-}
-
-.service-content ul {
-  margin-top: 20px;
-  padding-left: 20px;
-}
-
-.service-card.active .service-content {
-  max-height: 300px;
-  opacity: 1;
-}
-
-.service-card.active .arrow {
-  transform: rotate(45deg);
-}
-
-    .card:hover {
-      transform: translateY(-10px) scale(1.02);
+    .service-card:hover {
+      transform: translateY(-6px);
       box-shadow: 0 25px 50px rgba(31,111,255,0.25);
     }
 
-    /* ---------- ABOUT ---------- */
-    .about {
-      background: var(--light-blue);
-      border-radius: 30px;
-      padding: 60px;
-      text-align: center;
+    .service-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .arrow {
+      font-size: 26px;
+      color: var(--blue);
+      transition: transform 0.3s ease;
+    }
+
+    .service-content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.5s ease;
+    }
+
+    .service-card.active .service-content {
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    .service-card.active .arrow {
+      transform: rotate(45deg);
+    }
+
+    /* ---------- TRUST ---------- */
+    #trust {
+      background: linear-gradient(135deg, var(--blue), #4f8cff);
+      border-radius: 60px;
+      color: white;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .trust-card {
+      background: white;
+      color: var(--dark);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+      transition: transform 0.4s ease;
+    }
+
+    .trust-card:hover {
+      transform: translateY(-8px);
+    }
+
+    /* ---------- GALLERY ---------- */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      transition: all 0.5s ease;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 30px 60px rgba(31,111,255,0.35);
+    }
+
+    /* ---------- AI ---------- */
+    .ai-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 70px;
+      height: 70px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 35px rgba(31,111,255,0.6);
+      cursor: pointer;
+      z-index: 2000;
+      animation: foxPulse 2.5s infinite;
+    }
+
+    @keyframes foxPulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
     }
 
     /* ---------- FOOTER ---------- */
@@ -302,248 +315,14 @@
       text-align: center;
       padding: 30px;
     }
-
-    /* ---------- AI BUTTON ---------- */
-.ai-button {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 70px;
-  height: 70px;
-  background: white;
-  border-radius: 50%;
-  padding: 10px;
-  cursor: pointer;
-  box-shadow: 0 15px 35px rgba(31,111,255,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 2000;
-}
-
-.ai-button img {
-  width: 100%;
-  height: auto;
-}
-.ai-button img {
-  animation: foxPulse 2.5s infinite ease-in-out;
-}
-
-@keyframes foxPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1); }
-}
-/* 👆 END OPTION 4 */
-
-.ai-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 40px rgba(31,111,255,0.9);
-}
-.ai-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 40px rgba(31,111,255,0.9);
-}
-
-
-    .ai-button:hover {
-      box-shadow: 0 0 30px rgba(31,111,255,0.9);
-      transform: scale(1.08);
-    }
-
-    /* ---------- CHAT ---------- */
-    .chat {
-      position: fixed;
-      bottom: 90px;
-      right: 25px;
-      width: 320px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 2000;
-    }
-
-    .chat header {
-      background: var(--blue);
-      color: white;
-      padding: 15px;
-      font-weight: 700;
-    }
-
-    .chat .body {
-      padding: 15px;
-      font-size: 14px;
-      height: 200px;
-      overflow-y: auto;
-    }
-
-    .chat .msg {
-      background: var(--light-blue);
-      padding: 10px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-
-    .chat footer {
-      padding: 10px;
-      background: #f1f1f1;
-      font-size: 12px;
-      text-align: center;
-    }
-    
-.chat-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--blue);
-  color: white;
-  padding: 15px;
-  font-weight: 700;
-}
-
-.chat-header img {
-  width: 28px;
-  height: auto;
-}
-
-    /* ---------- GALLERY ---------- */
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
-
-.image-grid img {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  transition: all 0.6s ease;
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-.image-grid img.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.image-grid img:hover {
-  transform: scale(1.04);
-  box-shadow: 0 30px 60px rgba(31,111,255,0.35);
-}
-
-/* ---------- TRUST & COMPLIANCE ---------- */
-/* ---------- TRUST & COMPLIANCE ---------- */
-#trust {
-  background: linear-gradient(135deg, var(--blue), #4f8cff);
-  border-radius: 60px;
-  padding: 100px 30px;
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-
-
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  position: relative;
-  z-index: 2;
-}
-
-.trust-card {
-  background: white;
-  padding: 30px;
-  border-radius: 25px;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
-  transition: all 0.4s ease;
-  color: var(--dark);
-}
-
-.trust-card h3 {
-  margin-top: 0;
-  color: var(--blue);
-}
-
-.trust-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 30px 65px rgba(0,0,0,0.25);
-}
-
-
-  </div>
-</section>
-
-    /* ---------- HERO QUOTES ---------- */
-/* ---------- HERO QUOTES (MOBILE SAFE) ---------- */
-.quote-slider {
-  margin-top: 130px;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.quote-track {
-  display: flex;
-  width: max-content;
-  animation: slideQuotes 12s linear infinite;
-}
-  
-.quote-slider:hover .quote-track {
-  animation-play-state: paused;
-}
-
-
-.quote-track span {
-  padding: 0 45px;
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  white-space: nowrap;
-  opacity: 0.95;
-}
-
-
-@keyframes slideQuotes {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-}
-    @media (max-width: 768px) {
-  .quote-track span {
-    font-size: 14px;
-    padding: 0 25px;
-  }
-}
-
-
-    
   </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" onclick="window.location.reload(); return false;">
-    <img src="images/logo2.png" alt="Fox Cleaning Logo">
-  </a>
-
-  <!-- New center section - only visible on desktop -->
-  <div class="nav-center">
-    Professional • Reliable • Affordable Cleaning
-  </div>
-
+  <img src="images/logo2.png" alt="Fox Cleaning">
+  <div class="nav-center">Professional • Reliable • Affordable</div>
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#about">About</a>
@@ -551,201 +330,62 @@
   </div>
 </nav>
 
-<!-- HERO -->
-</div>
-
 <header class="hero">
-  <img src="images/logo2.png" class="hero-logo" alt="Fox Cleaning Logo">
-  <h1>Professional Cleaning, Affordable Cleaning - Fox Guarantee </h1>
-  <p>Trusted domestic & clinical cleaning across your area</p>
+  <img src="images/logo2.png" class="hero-logo">
+  <h1>Professional & Affordable Cleaning</h1>
+  <p>Trusted domestic & clinical cleaning</p>
   <a href="#services" class="cta">View Services</a>
 
-    <div class="quote-slider">
-  <div class="quote-track">
-    <span>“Ey Bob.”</span>
-    <span>“Just Imagine.”</span>
-    <span>“Ey Bob.”</span>
-    <span>“Just Imagine.”</span>
+  <div class="quote-slider">
+    <div class="quote-track">
+      <span>“Professional standards, every clean.”</span>
+      <span>“Trusted by clinical environments.”</span>
+      <span>“Reliable. Friendly. Thorough.”</span>
+      <span>“Cleaning done right.”</span>
+    </div>
   </div>
 </header>
 
-
-<!-- SERVICES -->
 <section id="services">
   <h2>Our Services</h2>
-
   <div class="services">
-
     <div class="service-card" onclick="toggleService(this)">
       <div class="service-header">
-        <h3>Domestic House Cleaning</h3>
+        <h3>Domestic Cleaning</h3>
         <span class="arrow">+</span>
       </div>
       <div class="service-content">
         <ul>
-          <li>Professional, friendly cleaning for your family home</li>
+          <li>Regular or one-off cleans</li>
           <li>Kitchens & bathrooms</li>
-          <li>Dusting & vacuuming</li>
-          <li>Flexible schedules</li>
+          <li>Flexible scheduling</li>
         </ul>
       </div>
     </div>
-
-    <div class="service-card" onclick="toggleService(this)">
-      <div class="service-header">
-        <h3>Care Home & Assisted living Cleaning</h3>
-        <span class="arrow">+</span>
-      </div>
-      <div class="service-content">
-        <ul>
-          <li>Specialised cleaning for elderly & care facilities</li>
-          <li>Daily / weekly schedules for infectant control focus</li>
-          <li>Gentle on residents, thorough on high touch areas</li>
-          <li>Discreet, considerate and respectful approach</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="service-card" onclick="toggleService(this)">
-      <div class="service-header">
-        <h3>Clinical Facility cleaning</h3>
-        <span class="arrow">+</span>
-      </div>
-      <div class="service-content">
-        <ul>
-          <li>Hospital-grade disinfection for clinics & medical sites</li>
-          <li>Strict compliance with health & safety regulations</li>
-          <li>Clinically prescatious cleaning experts</li>
-          <li>Bio-hazard and infection control protocool</li>
-        </ul>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<section id="trust">
-  <h2>Trust & Compliance</h2>
+<footer>© 2026 Fox Cleaning Services</footer>
 
-  <div class="trust-grid">
-
-    <div class="trust-card">
-      <h3>✔ Fully Insured</h3>
-      <p>Public liability insurance in place for complete peace of mind.</p>
-    </div>
-
-    <div class="trust-card">
-      <h3>✔ DBS-Checked Staff</h3>
-      <p>Cleaners can be DBS-checked upon company launch.</p>
-    </div>
-
-    <div class="trust-card">
-      <h3>✔ COSHH Aware</h3>
-      <p>Cleaning processes designed with COSHH safety standards in mind.</p>
-    </div>
-
-    <div class="trust-card">
-      <h3>✔ GDPR Conscious</h3>
-      <p>Client data handled responsibly and securely.</p>
-    </div>
-
-    <div class="trust-card">
-      <h3>✔ Medical-Site Ready</h3>
-      <p>Framework suitable for surgeries, dentists, nurseries and family centres.</p>
-    </div>
-
-    <div class="trust-card">
-      <h3>✔ Professional Standards</h3>
-      <p>Clear processes, checklists and quality control systems.</p>
-    </div>
-
-  </div>
-</section>
-
-  
-<section id="gallery">
-  <h2>Our Work</h2>
-
-  <div class="image-grid">
-    <img src="images/service1.jpg" alt="Cleaning work">
-    <img src="images/service2.jpg" alt="Professional clean">
-    <img src="images/service3.jpg" alt="Spotless results">
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about">
-    <h2>Why Fox Cleaning?</h2>
-    <p>
-      Friendly, reliable cleaners with modern systems and clear pricing.
-    </p>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Email: FoxCleaning@info.com</p>
-  <p>Phone: 0121DO1</p>
-</section>
-
-<footer>
-  © 2026 Fox Cleaning Services
-</footer>
-
-<div class="ai-button" onclick="toggleChat()">
-  <img src="images/logo2.png" alt="Fox AI">
-</div>
-
-
-<div class="chat" id="chat">
-  <header class="chat-header">
-    <img src="images/logo2.png" alt="Fox AI">
-    <span>Fox AI</span>
-  </header>
-
-  <div class="body">
-    <div class="msg">👋 Hi! I’m Fox AI.</div>
-    <div class="msg">Ask about services, pricing, or availability.</div>
-  </div>
-  <footer>AI coming soon</footer>
+<div class="ai-button">
+  <img src="images/logo2.png" width="42">
 </div>
 
 <script>
-  function toggleChat() {
-    const chat = document.getElementById("chat");
-    chat.style.display = chat.style.display === "flex" ? "none" : "flex";
-  }
   function toggleService(card) {
-  const allCards = document.querySelectorAll(".service-card");
-
-  allCards.forEach(c => {
-    if (c !== card) {
-      c.classList.remove("active");
-    }
-  });
-
-  card.classList.toggle("active");
-}
-
-
-  // Scroll animation
-  const sections = document.querySelectorAll("section");
+    document.querySelectorAll(".service-card").forEach(c => {
+      if (c !== card) c.classList.remove("active");
+    });
+    card.classList.toggle("active");
+  }
 
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add("show");
     });
   }, { threshold: 0.2 });
 
-  sections.forEach(section => observer.observe(section));
-
-  const images = document.querySelectorAll(".image-grid img");
-images.forEach(img => observer.observe(img));
-
+  document.querySelectorAll("section").forEach(s => observer.observe(s));
 </script>
 
 </body>
