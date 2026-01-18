@@ -482,6 +482,72 @@
   </div>
 </section>
 
+    /* ---------- TESTIMONIALS ---------- */
+#testimonials {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.testimonial-wrapper {
+  overflow: hidden;
+  max-width: 900px;
+  margin: auto;
+}
+
+.testimonial-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.testimonial-card {
+  min-width: 100%;
+  padding: 50px 30px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+}
+
+.testimonial-card p {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.testimonial-card span {
+  font-weight: 700;
+  color: var(--blue);
+}
+
+/* DOTS */
+.testimonial-dots {
+  margin-top: 30px;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--blue);
+  transform: scale(1.3);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .testimonial-card p {
+    font-size: 16px;
+  }
+}
+
+
     /* ---------- HERO QUOTES ---------- */
 /* ---------- HERO QUOTES (MOBILE SAFE) ---------- */
 .quote-slider {
@@ -676,6 +742,43 @@
 
   </div>
 </section>
+  
+<section id="testimonials" class="reveal">
+  <h2>What Our Clients Say</h2>
+
+  <div class="testimonial-wrapper">
+    <div class="testimonial-track">
+
+      <div class="testimonial-card">
+        <p>
+          “Reliable, professional, and extremely thorough. Our clinic has never looked better.”
+        </p>
+        <span>— Practice Manager, Medical Surgery</span>
+      </div>
+
+      <div class="testimonial-card">
+        <p>
+          “Friendly staff and excellent attention to detail. Highly recommended.”
+        </p>
+        <span>— Homeowner</span>
+      </div>
+
+      <div class="testimonial-card">
+        <p>
+          “Perfect framework for compliance-focused cleaning. We felt completely confident.”
+        </p>
+        <span>— Care Facility Coordinator</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="testimonial-dots">
+    <span class="dot active" onclick="goToTestimonial(0)"></span>
+    <span class="dot" onclick="goToTestimonial(1)"></span>
+    <span class="dot" onclick="goToTestimonial(2)"></span>
+  </div>
+</section>
 
   
 <section id="gallery">
@@ -781,6 +884,26 @@ images.forEach(img => observer.observe(img));
 
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
+
+  <script>
+  let testimonialIndex = 0;
+  const track = document.querySelector(".testimonial-track");
+  const dots = document.querySelectorAll(".dot");
+
+  function goToTestimonial(index) {
+    testimonialIndex = index;
+    track.style.transform = `translateX(-${index * 100}%)`;
+
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[index].classList.add("active");
+  }
+
+  setInterval(() => {
+    testimonialIndex = (testimonialIndex + 1) % dots.length;
+    goToTestimonial(testimonialIndex);
+  }, 6000);
+</script>
+
 </script>
 
 </body>
