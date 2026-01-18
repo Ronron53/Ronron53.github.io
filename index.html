@@ -98,52 +98,18 @@ nav {
   width: 100%;
   background: white;
   display: flex;
-  justify-content: space-between;     /* keeps left/right spread */
+  justify-content: space-between;
   align-items: center;
   padding: 12px 30px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   z-index: 1000;
 }
 
-.nav-left,
-.nav-right {
-  display: flex;
-  align-items: center;
-}
-
-.nav-center {
-  flex: 1;                            /* ← This makes it take up the middle space */
-  text-align: center;                 /* centers the text inside */
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--blue);
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
-
-/* Hide center on mobile */
-@media (max-width: 992px) {
-  .nav-center {
-    display: none;
-  }
-  
-  /* Optional: tighten up spacing on small screens */
-  nav {
-    padding: 12px 20px;
-    justify-content: space-between;
-  }
-  
-  .nav-right {
-    gap: 15px;
-  }
-}
-
-/* Make sure logo and links don't stretch weirdly */
-.nav-left img {
+nav img {
   height: 40px;
 }
 
-.nav-right a {
+nav a {
   margin-left: 20px;
   text-decoration: none;
   color: #333;
@@ -151,7 +117,7 @@ nav {
   position: relative;
 }
 
-.nav-right a::after {
+nav a::after {
   content: "";
   position: absolute;
   width: 0;
@@ -162,7 +128,7 @@ nav {
   transition: width 0.3s ease;
 }
 
-.nav-right a:hover::after {
+nav a:hover::after {
   width: 100%;
 }
     /* ---------- HERO ---------- */
